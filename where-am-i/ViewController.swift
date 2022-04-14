@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
+    
+    @IBOutlet weak var mapReference: MKMapView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
