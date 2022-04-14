@@ -8,16 +8,30 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapReference: MKMapView!
+    
+    var managerLocation = CLLocationManager()
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        managerLocation.delegate = self
+        managerLocation.desiredAccuracy = kCLLocationAccuracyBest
+        managerLocation.requestWhenInUseAuthorization()
+        managerLocation.startUpdatingLocation()
     }
-
+    
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedWhenInUse {
+            // configurar alert
+        }
+        
+    }
 
 }
 
